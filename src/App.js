@@ -213,7 +213,7 @@ function App() {
           onMouseOver={MontageModeleB}
           onClick={MontageModeleB}
         >
-          Model B{nbrmodelB}
+          Model B {nbrmodelB}
         </button>
       </div>
       <div className="relative pt-6 pb-16 sm:pb-10 p-20">
@@ -226,7 +226,7 @@ function App() {
         </span>
 
         <h1 className="mb-5 bt-5 text-2xl font-extrabold">
-          Production du modèle B{" "}
+          Production du modèle B {" "}
         </h1>
         <span className="text-3xl font-extrabold text-red-500" >
           {" "}
