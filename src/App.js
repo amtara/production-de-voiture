@@ -19,7 +19,6 @@ function App() {
   });
   const [nbrmodelA, setnbrModelA] = useState(0);
   const [nbrmodelB, setnbrModelB] = useState(0);
-
   const employeeProductivityPneu24h = 1 / productionPneu;
   const employeeProductivityPorte24h = 1 / productionPorte;
   const employeeProductivityMoteur24h = 1 / productionMoteur;
@@ -29,7 +28,7 @@ function App() {
 
   /*--------------------------------------------------------------*/
 
-  //récuperation de la valeur a travers un useState
+  //récuperation de la valeur à travers un useState
   const handleChange = (e) => {
     setNbrEmploye(e.target.value);
   };
@@ -58,104 +57,80 @@ function App() {
     setComposant({ ...composant, chassis: nbrChassis });
   }
 
- 
-  //Montage de modèle A
+  /*--------------------------------------------------------------*/
+
+  //Montage du modèle A
   function MontageModeleA() {
     let nbModelA = employeeProductivityVoitureA24h * nbrEmploye;
 
-
     if (nbModelA > composant.moteur) {
       setnbrModelA(composant.moteur);
-
     } else if (nbModelA < composant.moteur) {
       setnbrModelA(nbModelA);
     } else {
       console.log("nbmodelA 1" + nbModelA);
       setnbrModelA(nbModelA);
     }
-    
+
     if (4 * nbrmodelA === composant.pneu) {
       setnbrModelA(nbrmodelA);
     } else if (4 * nbrmodelA > composant.pneu) {
-
       setnbrModelA(Math.round(composant.pneu / 4));
     } else {
-
       setnbrModelA((prevNbrmodelA) => prevNbrmodelA);
     }
 
     if (2 * nbrmodelA === composant.porte) {
       setnbrModelA(nbrmodelA);
-
     } else if (2 * nbrmodelA > composant.porte) {
       setnbrModelA(Math.round(composant.porte / 2));
-
     } else {
       setnbrModelA((prevNbrmodelA) => prevNbrmodelA);
     }
 
     if (1 * nbrmodelA === composant.chassis) {
       setnbrModelA(nbrmodelA);
-
     } else if (1 * nbrmodelA > composant.chassis) {
       setnbrModelA(Math.round(composant.chassis / 1));
-
     } else {
       setnbrModelA((prevNbrmodelA) => prevNbrmodelA);
     }
   }
 
-
+  //Montage du modèle B
   function MontageModeleB() {
     let nbModelB = employeeProductivityVoitureB24h * nbrEmploye;
 
-    
     if (nbModelB > composant.moteur) {
       setnbrModelB(composant.moteur);
-
     } else if (nbModelB < composant.moteur) {
       setnbrModelB(nbModelB);
-     
     } else {
       setnbrModelB(nbModelB);
     }
-    
     if (6 * nbModelB === composant.pneu) {
       setnbrModelB(nbrmodelB);
-     
     } else if (6 * nbModelB > composant.pneu) {
-
       setnbrModelB(Math.round(composant.pneu / 6));
-
     } else {
-
       setnbrModelB((prevNbrmodelB) => prevNbrmodelB);
-
     }
 
     if (4 * nbModelB === composant.porte) {
       setnbrModelB(nbModelB);
-   
     } else if (4 * nbModelB > composant.porte) {
       setnbrModelB(Math.round(composant.porte / 4));
-     
     } else {
       setnbrModelB((prevNbrmodelB) => prevNbrmodelB);
-    
     }
-
     if (1 * nbModelB === composant.chassis) {
       setnbrModelB(nbrmodelB);
-
-
     } else if (1 * nbModelB > composant.chassis) {
       setnbrModelB(Math.round(composant.chassis / 1));
-  
     } else {
       setnbrModelB((prevNbrmodelB) => prevNbrmodelB);
-    
     }
-   }
+  }
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
@@ -168,8 +143,8 @@ function App() {
         porte: "",
       });
       setNbrEmploye(0);
-      setnbrModelA(0)
-      setnbrModelB(0)
+      setnbrModelA(0);
+      setnbrModelB(0);
     }
   }, []);
 
@@ -211,7 +186,8 @@ function App() {
               : " mr-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-400"
           }`}
         >
-          {composant.moteur === 0 ? "" : composant.moteur} moteur(s) construit(s)
+          {composant.moteur === 0 ? "" : composant.moteur} moteur(s)
+          construit(s)
         </button>
         <button
           onMouseOver={chassisProduction}
@@ -222,20 +198,40 @@ function App() {
           }`}
         >
           {" "}
-          {composant.chassis === 0 ? "0" : composant.chassis} chassis construit(s)
+          {composant.chassis === 0 ? "0" : composant.chassis} chassis
+          construit(s)
         </button>
-        <button className="mr-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-400 hover:bg-blue-400 " onMouseOver={MontageModeleA} onClick={MontageModeleA}>Model A {nbrmodelA}</button>
-        <button className="mr-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-400 hover:bg-blue-400 " onMouseOver={MontageModeleB} onClick={MontageModeleB}>Model A {nbrmodelB}</button>
-       
-       
-     
+        <button
+          className="mr-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-400 hover:bg-blue-400 "
+          onMouseOver={MontageModeleA}
+          onClick={MontageModeleA}
+        >
+          Model A {nbrmodelA}
+        </button>
+        <button
+          className="mr-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-400 hover:bg-blue-400 "
+          onMouseOver={MontageModeleB}
+          onClick={MontageModeleB}
+        >
+          Model A {nbrmodelB}
+        </button>
       </div>
       <div className="relative pt-6 pb-16 sm:pb-10 p-20">
-      <h1 className="mb-5 bt-5 text-2xl font-extrabold">Production du modèle A </h1>
-      <span className="text-3xl font-extrabold text-red-500">  {nbrmodelA} </span>
-     
-      <h1 className="mb-5 bt-5 text-2xl font-extrabold">Production du modèle B </h1>
-      <span className="text-3xl font-extrabold text-red-500">  {nbrmodelB} </span>
+        <h1 className="mb-5 bt-5 text-2xl font-extrabold">
+          Production du modèle A{" "}
+        </h1>
+        <span className="text-3xl font-extrabold text-red-500">
+          {" "}
+          {nbrmodelA}{" "}
+        </span>
+
+        <h1 className="mb-5 bt-5 text-2xl font-extrabold">
+          Production du modèle B{" "}
+        </h1>
+        <span className="text-3xl font-extrabold text-red-500">
+          {" "}
+          {nbrmodelB}{" "}
+        </span>
       </div>
     </>
   );
