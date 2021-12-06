@@ -132,6 +132,8 @@ function App() {
     }
   }
 
+
+
   useEffect(() => {
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
@@ -204,16 +206,16 @@ function App() {
         <button
           className="mr-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-400 hover:bg-blue-400 "
           onMouseOver={MontageModeleA}
-          onClick={MontageModeleA}
+          onClick={affichageModelA}
         >
-          Model A {nbrmodelA}
+          Modèle A {nbrmodelA}
         </button>
         <button
           className="mr-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-400 hover:bg-blue-400 "
           onMouseOver={MontageModeleB}
           onClick={MontageModeleB}
         >
-          Model B {nbrmodelB}
+          Modèle B {nbrmodelB}
         </button>
       </div>
       <div className="relative pt-6 pb-16 sm:pb-10 p-20">
