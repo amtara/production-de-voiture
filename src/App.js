@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import InputComponent from "./components /InputComponent";
+import InputComponent from "./Composants/InputComponent";
 
 const productionPneu = 0.2;
 const productionPorte = 1;
